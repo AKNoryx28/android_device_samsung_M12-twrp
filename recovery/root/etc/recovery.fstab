@@ -1,0 +1,41 @@
+## mount point       fstype    device                                                                flags
+
+# logical parttions
+/system             ext4      system                                flags=display="System";backup=1;logical   
+/vendor             ext4      vendor                                flags=display="Vendor";backup=1;logical
+/product            ext4      product                               flags=display="Product";backup=1;logical
+/odm                ext4      odm                                   flags=display="Odm";backup=1;logical
+
+# Boot-Recovery
+/boot               emmc      /dev/block/by-name/boot               flags=display="Boot";backup=1;flashimg=1
+/recovery           emmc      /dev/block/by-name/recovery           flags=display="Recovery";backup=1;flashimg=1
+
+/metadata           ext4      /dev/block/by-name/metadata           flags=display="Metadata";backup=1
+
+# Userdata
+/data               f2fs      /dev/block/by-name/userdata           flags=display="Data";fileencryption=ice:aes-256;wipeingui
+
+/cache              ext4      /dev/block/by-name/cache              flags=display="Cache";backup=1
+
+# Removable storage
+/sdcard1            auto     /dev/block/mmcblk0p1 /dev/block/mmcblk0p0                  flags=fsflags=utf8;display="MicroSD";storage;wipeingui;removable
+/usb-otg            auto     /dev/block/sdf1 /dev/block/sdf                             flags=display="USB OTG";storage;removable;wipeingui
+
+/efs                ext4      /dev/block/by-name/sec_efs            flags=display="EFS";backup=1
+/sec_efs            ext4      /dev/block/by-name/sec_efs            flags=display="Sec EFS";backup=1
+/carrier            ext4      /dev/block/by-name/carrier            flags=display="Carrier"
+/preload            ext4      /dev/block/by-name/hidden             flags=display="Preload"
+/modem              emmc      /dev/block/by-name/radio              flags=display="Modem";backup=1
+/misc               emmc      /dev/block/by-name/misc               flags=display="Misc";backup=1;flashimg=1
+/keydata            ext4      /dev/block/by-name/keydata            flags=display="Keydata"
+/keyrefuge          f2fs      /dev/block/by-name/keyrefuge          flags=display="Keyrefuge"
+/dtbo               emmc      /dev/block/by-name/dtbo               flags=display="Dtbo";backup=1;flashimg=1
+
+/prism              ext4      /dev/block/by-name/prism              flags=display="Prism"
+/prism_img          emmc      /dev/clock/by-name/prism              flags=backup=1;flashimg;display="Prism image"
+/optics             ext4      /dev/block/by-name/optics             flags=display="Optics"
+/optics_img         emmc      /dev/block/by-name/prism              flags=backup=1;flashimg;display="Optics image"
+
+/vbmeta_system      emmc      /dev/block/by-name/vbmeta_system      flags=display="Vbmeta_system";backup=1;flashimg=1
+/vendor_boot        emmc      /dev/block/by-name/vendor_boot        flags=display="Vendor_boot";backup=1;flashimg=1
+/vbmeta_samsung     emmc      /dev/block/by-name/vbmeta_samsung     flags=display="Vbmeta_samsung";backup=1;flashimg=1
